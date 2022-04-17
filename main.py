@@ -1,26 +1,7 @@
 import ast
-from pprint import pprint
+import sys
 
-TARGET_FILE = "target.py"
-
-"""
-def find_function_calls(tree):
-    for node in ast.walk(tree):
-        if isinstance(node, ast.Call):
-            print(ast.dump(node))
-            if node.keywords:
-                for keyword in node.keywords:
-                    print(f"{keyword.arg}={keyword.value.value}")
-            name = ""
-
-            if isinstance(node.func, ast.Attribute):
-                name = node.func.attr
-            elif isinstance(node.func, ast.Name):
-                name = node.func.id
-
-            print(name)
-"""
-
+TARGET_FILE = sys.argv[1] if len(sys.argv) > 1 else "target.py"
 
 def find_defined_function_call(tree, rules, filename):
     for node in ast.walk(tree):
